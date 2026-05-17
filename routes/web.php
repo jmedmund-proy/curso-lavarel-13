@@ -1,20 +1,24 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Middleware\EnsureTeamMembership;
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
 
-// Route::view('/', 'welcome', [
-//     'canRegister' => Features::enabled(Features::registration()),
-// ])->name('home');
+Route::view('/', 'welcome');
 
 // Route::get('/', function () {
 //     return view('welcome', ['name' => 'Jhon']);
 // });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/post', [PostController::class, 'index']);
+// Route::get('/post/create', [PostController::class, 'create']);
+// Route::get('/post/{post}', [PostController::class, 'edit']);
+// Route::get('/post/delete/{post}', [PostController::class, 'destroy']);
+
+Route::resource('post', PostController::class);
+Route::resource('category', CategoryController::class);
 
 Route::get('/home', function () {
     return '<h1>HOLA A TOODS</h1>';
