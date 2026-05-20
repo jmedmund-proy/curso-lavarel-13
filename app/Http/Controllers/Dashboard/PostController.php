@@ -18,8 +18,8 @@ class PostController extends Controller
         // Index clase 46
         //$posts = Post::get();
         // Index Paginado
-        $posts = Post::paginate(2);
-        // dd($posts);
+        $posts = Post::paginate(10);
+        session(['misesion' => 'Hola Mundo']);
         return view('dashboard.post.index', compact('posts'));
 
         // Clase de Categoria
@@ -61,7 +61,7 @@ class PostController extends Controller
     public function store(StoreRequest $request): RedirectResponse
     {
         Post::create($request->validated());
-        return to_route('post.index');
+        return to_route('post.index')->with('status', 'Post creado con éxito');
 
         // dd($request->all()['title']);
 
@@ -114,7 +114,7 @@ class PostController extends Controller
             $request->image->move(public_path('image'), $filename);
         }
         $post->update($data);
-        return to_route('post.index');
+        return to_route('post.index')->with('status', 'Post actualizado con éxito');
     }
 
     /**
@@ -122,7 +122,7 @@ class PostController extends Controller
      */
     public function destroy(Category $post): RedirectResponse
     {
-        $post->delete('post.index');
-        return to_route('post.index');
+        $post->delete();
+        return to_route('post.index')->with('status', 'Post eliminado con éxito');
     }
 }
