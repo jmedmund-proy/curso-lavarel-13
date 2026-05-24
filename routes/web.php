@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Middleware\EnsureTeamMembership;
+use App\Http\Middleware\UserIsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 // Route::view('/', 'welcome');
@@ -23,24 +24,30 @@ Route::get('/', function () {
 // });
 
 // Route::middleware([App\Http\Middleware\TestMiddleware::class])->group(function(){
-//     Route::group(['prefix' => 'dashboard'], function (){
-//     Route::resource('post', PostController::class);
-//     Route::resource('category', CategoryController::class);
-//     });
+    // Route::group(['prefix' => 'dashboard'], function (){
+    //     Route::resource('post', PostController::class);
+    //     Route::resource('category', CategoryController::class);
+    // });
 // });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => [App\Http\Middleware\TestMiddleware::class]], function (){
-    Route::resource('post', PostController::class);
-    Route::resource('category', CategoryController::class);
-    // ->except('show');
-    // ->except(['show']);
-    // ->only(['show']);
-    // Route::resources([
-    //     'post' => PostController::class,
-    //     'category' => CategoryController::class
-    // ]);
-});
+// Route::group(['prefix' => 'dashboard', 'middleware' => [App\Http\Middleware\TestMiddleware::class]], function (){
+//     Route::resource('post', PostController::class);
+//     Route::resource('category', CategoryController::class);
+//     // ->except('show');
+//     // ->except(['show']);
+//     // ->only(['show']);
+//     // Route::resources([
+//     //     'post' => PostController::class,
+//     //     'category' => CategoryController::class
+//     // ]);
+// });
 
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', UserIsAdminMiddleware::class]], function (){
+    Route::resources([
+        'post' => PostController::class,
+        'category' => CategoryController::class
+    ]);
+});
 
 Route::get('/home', function () {
     return '<h1>HOLA A TOODS</h1>';

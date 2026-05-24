@@ -36,7 +36,7 @@
         </div>
     @endif
 
-    {{ session('misesion') }}
+    {{-- {{ session('misesion') }} --}}
 
     @yield('content')
 

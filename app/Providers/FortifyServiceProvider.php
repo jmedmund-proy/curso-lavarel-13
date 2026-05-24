@@ -19,6 +19,9 @@ use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
 {
+
+    protected const HOME = '/dashboard';
+
     /**
      * Register any application services.
      */
@@ -75,6 +78,14 @@ class FortifyServiceProvider extends ServiceProvider
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
             return Limit::perMinute(5)->by($throttleKey);
+        });
+
+        Fortify::loginView(function(){
+            return view('auth.login');
+        });
+
+        Fortify::registerView(function(){
+            return view('auth.register');
         });
     }
 }
