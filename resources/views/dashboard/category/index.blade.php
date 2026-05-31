@@ -1,3 +1,7 @@
+@extends('dashboard.layout')
+
+@section('content')
+
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <div class="max-w-6xl mx-auto mt-10 p-4">
@@ -43,3 +47,5 @@
         {{ $categories->links() }}
     </div>
 </div>
+
+@endsection

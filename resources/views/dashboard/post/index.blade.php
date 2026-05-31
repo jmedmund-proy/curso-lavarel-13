@@ -13,9 +13,9 @@
 
     <div class="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="table">
                 <thead>
-                    <tr class="bg-gray-50 border-b border-gray-200 text-gray-600 text-xs uppercase font-semibold tracking-wider">
+                    <tr class="">
                         <th class="px-6 py-4">Id</th>
                         <th class="px-6 py-4">Title</th>
                         <th class="px-6 py-4">Category</th>
