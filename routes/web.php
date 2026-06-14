@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\ProfileController as ControllersProfileController;
 use App\Http\Middleware\EnsureTeamMembership;
 use App\Http\Middleware\UserIsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -42,10 +44,16 @@ Route::get('/', function () {
 //     // ]);
 // });
 
+//Rutas de Perfil para usuario autenticado
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');;
+});
+
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', UserIsAdminMiddleware::class]], function (){
     Route::resources([
         'post' => PostController::class,
-        'category' => CategoryController::class
+        'category' => CategoryController::class, 
     ]);
 });
 
