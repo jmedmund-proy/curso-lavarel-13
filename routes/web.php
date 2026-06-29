@@ -3,7 +3,7 @@
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProfileController;
-use App\Http\Controllers\ProfileController as ControllersProfileController;
+use App\Http\Controllers\Blog\BlogController;
 use App\Http\Middleware\EnsureTeamMembership;
 use App\Http\Middleware\UserIsAdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +55,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', UserIsAdminMiddl
         'post' => PostController::class,
         'category' => CategoryController::class, 
     ]);
+});
+
+Route::group(['prefix' => 'blog'], function (){
+    Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/{post}', [BlogController::class, 'show'])->name('blog.show');
 });
 
 Route::get('/home', function () {
