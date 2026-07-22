@@ -8,12 +8,13 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('post/all', [App\Http\Controllers\Api\PostController::class, 'all']);
+Route::get('post/slug/{post:slug}', [App\Http\Controllers\Api\PostController::class, 'slug']);
 Route::get('post/{post}', [App\Http\Controllers\Api\PostController::class, 'show']);
-Route::get('post/slug/{post:slug}', [App\Http\Controllers\Api\PostController::class, 'show']);
+Route::post('post/upload/{post}', [App\Http\Controllers\Api\PostController::class, 'upload']);
 
 Route::get('category/all', [App\Http\Controllers\Api\CategoryController::class, 'all']);
-Route::get('category/{category}', [App\Http\Controllers\Api\CategoryController::class, 'show']);
 Route::get('category/slug/{category:slug}', [App\Http\Controllers\Api\CategoryController::class, 'show']);
+Route::get('category/{category}', [App\Http\Controllers\Api\CategoryController::class, 'show']);
 
 // Route::resource('category', App\Http\Controllers\Api\CategoryController::class)->except(["create", "edit"])->middleware('auth:sanctum');
 // Route::resource('post', App\Http\Controllers\Api\PostController::class)->except(["create", "edit"]); 

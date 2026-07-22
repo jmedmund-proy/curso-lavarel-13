@@ -21,6 +21,7 @@ class PostResource extends JsonResource
             'descripcion' => $this->descripcion,
             'contenido' => $this->contenido,
             'category_id' => $this->category_id,
+            'posted' => $this->posted,
             'fecha' => $this->created_at->format('d-m-Y'),
             // Incluye la relación solo si ha sido cargada (Eficiencia)
             'category' => new CategoryResource($this->whenLoaded('category')),

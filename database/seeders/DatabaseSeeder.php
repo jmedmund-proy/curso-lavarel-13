@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(CategorySeeder::class);
         Category::factory(2)->create();
-        Post::factory(2)->create();
+        Post::factory(20)->create();
+
+        //Ejecutar en terminal con: php artisan db:seed
     }
 }

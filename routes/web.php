@@ -77,3 +77,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/settings.php';
+
+//RUTAS DE VIEW
+Route::get('/vue', function () {
+    return view('vue');
+});
+// Si hay 404 al abrir nueva pestaña
+// Route::get('/vue/{n1?}/{n2?}/{n3?}', function () {
+//     return view('vue');
+// });

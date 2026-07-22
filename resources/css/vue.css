@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import '../../node_modules/@oruga-ui/theme-oruga/dist/theme.css';
+
+h1 {
+    @apply text-2xl font-semibold mb-6 text-gray-800 text-center
+}
+
+input, select, textarea, .o-input, .o-select, .o-upload {
+    @apply block w-full
+}
+
+ /* {
+    @apply block
+} */
