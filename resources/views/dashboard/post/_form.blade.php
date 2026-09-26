@@ -61,6 +61,11 @@
             <textarea name="contenido" rows="4"
                 class="w-full px-4 py-2 border border-gray-300 
                 rounded-md focus:ring-2 focus:ring-blue-500 outline-none">{{ old('contenido', $post->contenido ) }}</textarea>
+            
+            {{-- <div id="toolbar-container"></div>
+            <div id="editor">
+                {!! old('contenido', $post->contenido ) !!}
+            </div> --}}
         </div>
 
         <!-- Descripción -->
@@ -97,6 +102,9 @@
                 Actualizar Post
             </button>
         </div>
+
+        @vite(['resources/css/ckeditor.css', 'resources/js/ckeditor.js'])
+
         {{--  --}}
 {{-- 
     </form>

@@ -28,12 +28,12 @@ class CategoryController extends Controller
         //
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): CategoryResource
     {
-        return CategoryResource::collection(Category::create($request->validated()), 201);
+        return new CategoryResource(Category::create($request->validated()), 201);
     }
 
-    public function show(Category $category): JsonResponse
+    public function show(Category $category): AnonymousResourceCollection
     {
         return CategoryResource::collection($category);
     }

@@ -16,7 +16,10 @@
                 
                 <div class="flex items-center gap-8">
                     <div class="flex shrink-0 items-center font-bold text-xl text-blue-600 tracking-tight">
-                        Dashboard
+                        {{-- Prueba de traduccion --}}
+                        {{ __('welcome.welcome') }}
+                        Dashboard 
+                        {{-- Llamando al helper function {{ hello("Jose") }} --}}
                     </div>
 
                     <div class="hidden md:flex items-center gap-4">
@@ -26,7 +29,7 @@
                         </a>
                         <a href="{{ route('category.index') }}" 
                            class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('category.*') ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }} transition">
-                            Categorías
+                            {{ __('welcome.category') }}
                         </a>
                     </div>
                 </div>

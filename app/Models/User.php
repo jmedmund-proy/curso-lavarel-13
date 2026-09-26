@@ -8,6 +8,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -23,6 +24,22 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, HasTeams, Notifiable, TwoFactorAuthenticatable, HasApiTokens;
 
+    public function loginTokens(): HasMany
+    {
+        return $this->hasMany(LoginToken::class);
+    }
+
+    /**
+     * Obtiene el último token pendiente/activo del usuario.
+     */
+    public function latestPendingToken()
+    {
+        return $this->hasOne(LoginToken::class)
+            ->where('status', 'pending')
+            ->where('expires_at', '>', now())
+            ->latestOfMany();
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -35,6 +52,10 @@ class User extends Authenticatable
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
         ];
+    }
+
+    public function posts() {
+        return $this->hasMany(Post::class);
     }
 
     function profile() {

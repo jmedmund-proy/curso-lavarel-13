@@ -12,7 +12,11 @@ export default defineConfig({
                     'resources/js/app.js',
                     'resources/js/vue/main.js', 
                     'resources/css/dashboard.css',
-                    'resources/css/blog.css'],
+                    'resources/css/blog.css',
+                    // CKEDITOR
+                    'resources/js/ckeditor.js',
+                    'resources/css/ckeditor.css'
+                ],
             refresh: true,
         }),
         vue(),

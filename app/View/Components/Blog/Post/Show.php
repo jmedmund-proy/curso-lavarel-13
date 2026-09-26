@@ -12,7 +12,7 @@ class Show extends Component
     public $post;
     public function __construct(Post $post)
     {
-        dd($this->post);
+        // dd($this->post);
         $this->post = $post;
     }
 

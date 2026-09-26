@@ -1,6 +1,21 @@
 {
     "agents": [
+        "opencode",
         "gemini"
     ],
-    "guidelines": true
+    "cloud": false,
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch": false,
+    "sail": false,
+    "skills": [
+        "ai-sdk-development",
+        "cashier-stripe-development",
+        "fortify-development",
+        "laravel-best-practices",
+        "fluxui-development",
+        "livewire-development",
+        "pest-testing",
+        "tailwindcss-development"
+    ]
 }

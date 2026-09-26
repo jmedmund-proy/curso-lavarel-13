@@ -3,7 +3,7 @@
 @section('content')
 
     {{-- <x-blog.post.index :posts="$posts" /> --}}
-    <x-blog.post.index :posts="$posts" title="Listaza">
+    <x-blog.post.index :posts="$posts" title="Listaza1">
         POST LIST
         @slot('titulo')
             HOLA

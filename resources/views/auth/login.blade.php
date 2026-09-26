@@ -31,12 +31,21 @@
                        class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition duration-200">
             </div>
 
-            <div class="flex items-center pt-1">
-                <input type="checkbox" name="remember" id="remember_me" 
-                       class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
-                <label for="remember_me" class="ml-2 block text-sm text-gray-600 select-none cursor-pointer">
-                    Recuérdame
-                </label>
+            <div class="flex items-center justify-between pt-1">
+                <!-- Contenedor del Checkbox y "Recuérdame" -->
+                <div class="flex items-center">
+                    <input type="checkbox" name="remember" id="remember_me" 
+                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+                    <!-- 'text-sm' aquí asegura 14px para "Recuérdame" -->
+                    <label for="remember_me" class="ml-2 block text-sm text-gray-600 select-none cursor-pointer">
+                        Recuérdame
+                    </label>
+                </div>
+
+                <!-- Enlace: 'text-sm' asegura 14px (antes estaba en 'text-xs' en mi error previo) -->
+                <a href="{{ route('auth.login-token-email') }}" class="text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline transition">
+                    Inicia sesión con correo
+                </a>
             </div>
 
             <div class="pt-2">

@@ -18,9 +18,10 @@ class UserIsAdminMiddleware
     {
         // dd(Auth::user());
         // if(Auth::user()->role != 'admin'){
-        if(auth()->user() && auth()->user()->role != 'admin'){
-            return to_route('home');
-        }
+        // Esto verifica si es admin o no y redirige
+        // if(auth()->user() && auth()->user()->role != 'admin'){
+        //     return to_route('blog.index');
+        // }
         return $next($request);
     }
 }

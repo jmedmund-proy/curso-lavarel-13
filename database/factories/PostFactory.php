@@ -23,7 +23,8 @@ class PostFactory extends Factory
             'slug' => str($name)->slug(),
             'contenido' => $this->faker->paragraph(50, true),
             'descripcion' => $this->faker->paragraph(4, true),
-            'category_id' => $this->faker->randomElement([1, 2, 3]),
+            'user_id' => $this->faker->randomElement([1, 2]),
+            'category_id' => $this->faker->randomElement([4, 2, 3]),
             'posted' => $this->faker->randomElement(['yes', 'not']),
             'image' => $this->faker->imageUrl()
         ];
